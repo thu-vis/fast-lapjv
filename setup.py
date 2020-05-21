@@ -9,7 +9,7 @@ CXX_ARGS = {
 }
 
 setup(
-    name="lapjv",
+    name="fast-lapjv",
     description="Linear sum assignment problem solver using Jonker-Volgenant "
                 "algorithm.",
     version="1.0.0",
