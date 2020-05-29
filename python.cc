@@ -6,23 +6,23 @@
 #include "lap.h"
 
 static char module_docstring[] =
-    "This module wraps LAPJV - Jonker-Volgenant linear sum assignment algorithm.";
-static char lapjv_docstring[] =
+    "This module wraps fastlapjv - Jonker-Volgenant linear sum assignment algorithm.";
+static char fastlapjv_docstring[] =
     "Solves the linear sum assignment problem.";
 
-static PyObject *py_lapjv(PyObject *self, PyObject *args, PyObject *kwargs);
+static PyObject *py_fastlapjv(PyObject *self, PyObject *args, PyObject *kwargs);
 
 static PyMethodDef module_functions[] = {
-  {"lapjv", reinterpret_cast<PyCFunction>(py_lapjv),
-   METH_VARARGS | METH_KEYWORDS, lapjv_docstring},
+  {"fastlapjv", reinterpret_cast<PyCFunction>(py_fastlapjv),
+   METH_VARARGS | METH_KEYWORDS, fastlapjv_docstring},
   {NULL, NULL, 0, NULL}
 };
 
 extern "C" {
-PyMODINIT_FUNC PyInit_lapjv(void) {
+PyMODINIT_FUNC PyInit_fastlapjv(void) {
   static struct PyModuleDef moduledef = {
       PyModuleDef_HEAD_INIT,
-      "lapjv",             /* m_name */
+      "fastlapjv",             /* m_name */
       module_docstring,    /* m_doc */
       -1,                  /* m_size */
       module_functions,    /* m_methods */
@@ -60,7 +60,7 @@ class _pyobj : public pyobj_parent<O> {
 using pyobj = _pyobj<PyObject>;
 using pyarray = _pyobj<PyArrayObject>;
 
-static PyObject *py_lapjv(PyObject *self, PyObject *args, PyObject *kwargs) {
+static PyObject *py_fastlapjv(PyObject *self, PyObject *args, PyObject *kwargs) {
   PyObject *cost_matrix_obj;
   int verbose = 0;
   int force_doubles = 0;
