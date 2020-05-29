@@ -71,7 +71,7 @@ void knn_sparse(float* cost_matrix, int n, int m, int k, bool sorted, int* sort_
     }
   }
   ed = GetTickCount();
-  printf("Sort Time: %dms\n", ed - st);
+  // printf("Sort Time: %dms\n", ed - st);
   std::vector<int> hc(hole_count, hole_count + n);
   std::vector<size_t> hc_sort = sort_indexes(hc);
   for (int i = n - 1; i >= 0; --i) {
@@ -123,7 +123,7 @@ void knn_sparse(float* cost_matrix, int n, int m, int k, bool sorted, int* sort_
   delete[] radish_sort_dist_index;
   delete[] radish_toCheck;
   ed = GetTickCount();
-  printf("Sparse Time: %dms\n", ed - st);
+  // printf("Sparse Time: %dms\n", ed - st);
 }
 
 int main() {

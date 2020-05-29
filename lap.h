@@ -232,34 +232,21 @@ cost lap(int dim, const cost *restrict _assign_cost, bool verbose,
          idx *restrict rowsol, idx *restrict colsol,
          cost *restrict u, cost *restrict v, int k_value) {
   
-  printf("k_value %d\n", k_value);
+  // printf("k_value %d\n", k_value);
   float *assign_cost = new float[dim*dim];
-  float init_sum = 0;
   for (int i = 0; i < dim * dim; i++){
     assign_cost[i] = _assign_cost[i];
-    init_sum += _assign_cost[i];
   }
-  printf("_assign_cost: %f\n", _assign_cost[0]);
 
-  // before sum
-  float before_sum = 0;
-  for (int i = 0; i < dim*dim; i++){
-    before_sum += assign_cost[i];
-  }
 
   knn_sparse(assign_cost, dim, dim, k_value, false, 0);
 
-  // after sum
-  float after_sum = 0;
   for (int i = 0; i < dim * dim; i++){
-    after_sum += assign_cost[i];
     if (assign_cost[i] < 1e-6){
       assign_cost[i] = INF;
     }
   }
   
-  printf("init sum: %f, before sum: %f, after sum: %f\n", init_sum, before_sum, after_sum);
-
 
   auto free = std::unique_ptr<idx[]>(new idx[dim]);     // list of unassigned rows.
   auto collist = std::unique_ptr<idx[]>(new idx[dim]);  // list of columns to be scanned in various ways.

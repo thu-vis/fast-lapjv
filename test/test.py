@@ -64,10 +64,10 @@ if __name__ == "__main__":
         # approximated LAPJV
         appro_time, appro_cost = approximated_lapjv()
         
-        print("computional time of exact method is: "exact_time)
-        print("cost of exact method is:" exact_cost)
-        print("computional time of approximated method is: "appro_time)
-        print("cost of approximated method is:" appro_cost)
+        print("computional time of exact method is: ", exact_time)
+        print("cost of exact method is:", exact_cost)
+        print("computional time of approximated method is: ", appro_time)
+        print("cost of approximated method is: ", appro_cost)
         print("****************************************")
-        print("the computational time is reduced by: " (exact_time - appro_time) / exact_time)
-        print("the error of cost is: " (exact_cost - appro_cost) / exact_cost)
+        print("the computational time is reduced by: {0:.2f}%".format((exact_time - appro_time) / exact_time * 100))
+        print("the error of cost is: {0:.2f}%".format((appro_cost - exact_cost) / exact_cost * 100))
