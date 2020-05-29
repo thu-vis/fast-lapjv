@@ -97,3 +97,6 @@ ENV/
 
 # vscode
 .vscode/
+
+# others
+exp-test/

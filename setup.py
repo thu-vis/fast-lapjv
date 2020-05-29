@@ -9,7 +9,7 @@ CXX_ARGS = {
 }
 
 setup(
-    name="fast-lapjv",
+    name="fastlapjv",
     description="Linear sum assignment problem solver using Jonker-Volgenant "
                 "algorithm.",
     version="1.0.0",
@@ -18,7 +18,7 @@ setup(
     author_email="vagroup@126.com",
     url="https://github.com/thu-vis/fast-lapjv",
     download_url="https://github.com/thu-vis/fast-lapjv",
-    ext_modules=[Extension("fast-lapjv",
+    ext_modules=[Extension("fastlapjv",
                            sources=["python.cc"],
                            extra_compile_args=CXX_ARGS[platform.system()],
                            include_dirs=[numpy.get_include()])],

@@ -64,11 +64,12 @@ static PyObject *py_fastlapjv(PyObject *self, PyObject *args, PyObject *kwargs) 
   PyObject *cost_matrix_obj;
   int verbose = 0;
   int force_doubles = 0;
+  int k_value = 1000;
   static const char *kwlist[] = {
-      "cost_matrix", "verbose", "force_doubles", NULL};
+      "cost_matrix", "verbose", "force_doubles", "k_value", NULL};
   if (!PyArg_ParseTupleAndKeywords(
-      args, kwargs, "O|pb", const_cast<char**>(kwlist),
-      &cost_matrix_obj, &verbose, &force_doubles)) {
+      args, kwargs, "O|pbi", const_cast<char**>(kwlist),
+      &cost_matrix_obj, &verbose, &force_doubles, &k_value)) {
     return NULL;
   }
   pyarray cost_matrix_array;
@@ -115,20 +116,20 @@ static PyObject *py_fastlapjv(PyObject *self, PyObject *args, PyObject *kwargs) 
       1, ret_dims, float32? NPY_FLOAT32 : NPY_FLOAT64));
   pyarray v_array(PyArray_SimpleNew(
       1, ret_dims, float32? NPY_FLOAT32 : NPY_FLOAT64));
-  double lapcost;
+  float lapcost;
   if (float32) {
     auto u = reinterpret_cast<float*>(PyArray_DATA(u_array.get()));
     auto v = reinterpret_cast<float*>(PyArray_DATA(v_array.get()));
     Py_BEGIN_ALLOW_THREADS
     lapcost = lap(dim, reinterpret_cast<float*>(cost_matrix), verbose,
-                  row_ind, col_ind, u, v);
+                  row_ind, col_ind, u, v, k_value);
     Py_END_ALLOW_THREADS
   } else {
-    auto u = reinterpret_cast<double*>(PyArray_DATA(u_array.get()));
-    auto v = reinterpret_cast<double*>(PyArray_DATA(v_array.get()));
+    auto u = reinterpret_cast<float*>(PyArray_DATA(u_array.get()));
+    auto v = reinterpret_cast<float*>(PyArray_DATA(v_array.get()));
     Py_BEGIN_ALLOW_THREADS
-    lapcost = lap(dim, reinterpret_cast<double*>(cost_matrix), verbose,
-                  row_ind, col_ind, u, v);
+    lapcost = lap(dim, reinterpret_cast<float*>(cost_matrix), verbose,
+                  row_ind, col_ind, u, v, k_value);
     Py_END_ALLOW_THREADS
   }
   return Py_BuildValue("(OO(dOO))",
