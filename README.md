@@ -14,6 +14,7 @@ Tested on Windows, and Linux with python 3.6.
 Usage Example
 -----
 Run this example to compare our method and the eaxct JV algorithm. Runing this example requires the installation of [scipy](https://www.scipy.org/) and [lapjv](https://github.com/src-d/lapjv).
+
 Note: the latest [lapjv](https://github.com/src-d/lapjv) uses some new features of python 3.8 or higher, and [fastlapjv](https://github.com/thu-vis/fast-lapjv) does not support python 3.8 or higher now. If you want to compare fastlapjv and lapjv, please use version 1.3.1 of lapjv, which support python 3.6.
 ```
 python test/test.py
