@@ -9,7 +9,7 @@ Installing
 ```
 pip3 install fastlapjv
 ```
-Tested on Windows, and Linux.
+Tested on Windows, and Linux with python 3.6.
 
 Usage Example
 -----
