@@ -1,4 +1,4 @@
-Linear Assignment Problem solver using kNN-based Jonker-Volgenant algorithm
+Linear Assignment Problem Solver Using kNN-based Jonker-Volgenant Algorithm
 ==================================================================
 
 Codes for kNN-based Jonker-Volgenant algorithm described in our paper ["OoDAnalyzer: Interactive Analysis of
