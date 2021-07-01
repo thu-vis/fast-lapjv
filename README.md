@@ -1,8 +1,7 @@
 Linear Assignment Problem Solver Using kNN-based Jonker-Volgenant Algorithm
 ==================================================================
 
-Codes for kNN-based Jonker-Volgenant algorithm described in our paper ["OoDAnalyzer: Interactive Analysis of
-Out-of-Distribution Samples"](https://ieeexplore.ieee.org/document/8994105) (TVCG 2020).
+Codes for kNN-based Jonker-Volgenant algorithm described in our paper ["OoDAnalyzer: Interactive Analysis of Out-of-Distribution Samples"](https://ieeexplore.ieee.org/document/8994105) (TVCG 2020).
 
 Installing
 ----------
@@ -27,8 +26,7 @@ This code is implemented based on the published code of [lapjv](https://github.c
 If you use this code for your research, please consider citing:
 ```
 @article{chen2020oodanalyzer,
-    title = {{OoDAnalyzer}: Interactive Analysis of
-Out-of-Distribution Samples},
+    title = {{OoDAnalyzer}: Interactive Analysis of Out-of-Distribution Samples},
     author = {Chen, Changjian and Yuan, Jun and Lu, Yafeng and Liu, Yang and Yuan, Songtao and Liu, Shixia},
     journal = {IEEE Transactions on Visualization and Computer Graphics (accepted)},
     year = {2020}
