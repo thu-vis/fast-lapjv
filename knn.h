@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <vector>
 #include <numeric>
-#include <windows.h>
+// #include <windows.h>
 // #include <omp.h>
 
 std::vector<size_t> sort_indexes(const std::vector<float> &v) {
@@ -29,8 +29,8 @@ std::vector<size_t> sort_indexes(const std::vector<int> &v) {
 
 void knn_sparse(float* cost_matrix, int n, int m, int k, bool sorted, int* sort_index_matrix) {
 
-  DWORD st, ed;
-  st = GetTickCount();
+  // DWORD st, ed;
+  // st = GetTickCount();
 
   bool* connected = new bool[n * m];
   memset(connected, false, n * m * sizeof(bool));
@@ -70,7 +70,7 @@ void knn_sparse(float* cost_matrix, int n, int m, int k, bool sorted, int* sort_
       }
     }
   }
-  ed = GetTickCount();
+  // ed = GetTickCount();
   // printf("Sort Time: %dms\n", ed - st);
   std::vector<int> hc(hole_count, hole_count + n);
   std::vector<size_t> hc_sort = sort_indexes(hc);
@@ -122,7 +122,7 @@ void knn_sparse(float* cost_matrix, int n, int m, int k, bool sorted, int* sort_
   delete[] hole_count;
   delete[] radish_sort_dist_index;
   delete[] radish_toCheck;
-  ed = GetTickCount();
+  // ed = GetTickCount();
   // printf("Sparse Time: %dms\n", ed - st);
 }
 
